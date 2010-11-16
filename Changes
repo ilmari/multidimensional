@@ -1,4 +1,7 @@
 Revision history for multidimensional
 
+0.002 2010-11-16
+ - Don't disallow explicit join($;, ...) in hash subscript
+
 0.001 2010-11-16
  - initial release
