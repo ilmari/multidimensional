@@ -7,12 +7,10 @@
 
 STATIC OP *last_list_start;
 
-STATIC OP *
-multidimensional_list_check_op (pTHX_ OP *op, void *user_data)
-{
+STATIC OP *multidimensional_list_check_op (pTHX_ OP *op, void *user_data) {
     PERL_UNUSED_ARG(user_data);
 
-    last_list_start = ((LISTOP *)op)->op_first->op_sibling;
+    last_list_start = ((LISTOP*)op)->op_first->op_sibling;
 
     return op;
 }
