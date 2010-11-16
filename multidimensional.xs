@@ -5,6 +5,18 @@
 
 #define __PACKAGE__ "multidimensional"
 
+STATIC OP *last_list_start;
+
+STATIC OP *
+multidimensional_list_check_op (pTHX_ OP *op, void *user_data)
+{
+    PERL_UNUSED_ARG(user_data);
+
+    last_list_start = ((LISTOP *)op)->op_first->op_sibling;
+
+    return op;
+}
+
 STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
     SV **hint = hv_fetchs(GvHV(PL_hintgv), __PACKAGE__, 0);
 
@@ -19,6 +31,7 @@ STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
 	const OP *next = first->op_sibling;
 	if (first && first->op_type == OP_PUSHMARK
 	    && next && next->op_type == OP_RV2SV
+	    && next != last_list_start
 	) {
 	    const OP *child = ((UNOP*)next)->op_first;
 	    if (child->op_type == OP_GV
@@ -41,6 +54,7 @@ BOOT:
     if(!multidimensional_hook_id)
 	multidimensional_hook_id = hook_op_check(OP_HELEM, multidimensional_helem_check_op, NULL);
 
+    hook_op_check(OP_LIST, multidimensional_list_check_op, NULL);
 
     /* TODO?
     hook_op_check_remove(OP_HELEM, multidimensional_hook_id);
