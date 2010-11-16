@@ -8,7 +8,7 @@ use warnings;
 use B::Hooks::OP::Check;
 use XSLoader;
 
-XSLoader::load __PACKAGE__, $VERSION;
+XSLoader::load __PACKAGE__, our $VERSION;
 
 =head1 SYNOPSIS
 
