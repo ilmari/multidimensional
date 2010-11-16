@@ -8,7 +8,14 @@ use warnings;
 use B::Hooks::OP::Check;
 use XSLoader;
 
-XSLoader::load __PACKAGE__, our $VERSION;
+XSLoader::load(
+    __PACKAGE__,
+    # we need to be careful not to touch $VERSION at compile time, otherwise
+    # DynaLoader will assume it's set and check against it, which will cause
+    # fail when being run in the checkout without dzil having set the actual
+    # $VERSION
+    exists $multidimensional::{VERSION} ? ${ $multidimensional::{VERSION} } : (),
+);
 
 =head1 SYNOPSIS
 
