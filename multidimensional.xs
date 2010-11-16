@@ -42,19 +42,10 @@ STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
     return op;
 }
 
-STATIC hook_op_check_id multidimensional_hook_id = 0;
-
 MODULE = multidimensional PACKAGE = multidimensional
 
 PROTOTYPES: ENABLE
 
 BOOT:
-    if(!multidimensional_hook_id)
-	multidimensional_hook_id = hook_op_check(OP_HELEM, multidimensional_helem_check_op, NULL);
-
+    hook_op_check(OP_HELEM, multidimensional_helem_check_op, NULL);
     hook_op_check(OP_LIST, multidimensional_list_check_op, NULL);
-
-    /* TODO?
-    hook_op_check_remove(OP_HELEM, multidimensional_hook_id);
-    multidimensional_hook_id = 0;
-    */
