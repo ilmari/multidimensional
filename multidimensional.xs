@@ -7,6 +7,9 @@
 
 STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
     SV **hint = hv_fetchs(GvHV(PL_hintgv), __PACKAGE__, 0);
+
+    PERL_UNUSED_ARG(user_data);
+
     if (!hint || !SvOK(*hint))
 	return op;
 
