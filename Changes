@@ -1,5 +1,6 @@
 Revision history for multidimensional
 
+{{$NEXT}}
  - Call ExtUtils::Depends from the built Makefile.PL,
    not when building it
 
