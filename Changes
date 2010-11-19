@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+
+0.004     2010-11-19 12:58:33 Europe/London
  - Perl 5.8 fixes
    - use Lexical::SealRequireHints
    - set $^H |= 0x20000
