@@ -11,25 +11,26 @@ BEGIN { use_ok 'multidimensional' }
 my %a;
 
 foreach my $code (
-    '$a{1,2}',
-    '{ $a{1,2} }',
-    '{ use multidimensional; } $a{1,2}',
-    'use multidimensional; { no multidimensional; $a{1,2} }',
+    'no multidimensional; $a{1,2}',
+    'no multidimensional; { $a{1,2} }',
+    'no multidimensional; { use multidimensional; } $a{1,2}',
+    '{ no multidimensional; $a{1,2} }',
 ) {
-    eval "no multidimensional; $code";
-    like $@, qr/Use of multidimensional array emulation/;
+    eval $code;
+    like $@, qr/Use of multidimensional array emulation/, $code;
 }
 
 foreach my $code (
-    '{ use multidimensional; $a{1,2} }',
-    'use multidimensional; $a{1,2}',
-    'require MyTest',
-    '$a{join(my $sep = $;, 1, 2)}',
-    'my $sep = $;; $a{join($sep, 1, 2)}',
-    '$a{join($;, 1, 2)}',
+    'no multidimensional; { use multidimensional; $a{1,2} }',
+    'no multidimensional; use multidimensional; $a{1,2}',
+    '{ no multidimensional; } $a{1,2}',
+    'no multidimensional; require MyTest',
+    'no multidimensional; $a{join(my $sep = $;, 1, 2)}',
+    'no multidimensional; my $sep = $;; $a{join($sep, 1, 2)}',
+    'no multidimensional; $a{join($;, 1, 2)}',
 ) {
-    eval "no multidimensional; $code";
-    is $@, "";
+    eval $code;
+    is $@, "", $code;
 }
 
 done_testing;
