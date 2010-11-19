@@ -1,6 +1,10 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Perl 5.8 fixes
+   - use Lexical::SealRequireHints
+   - set $^H |= 0x20000
+   - use hv_fetch() instead of hv_fetchs()
 
 0.003     2010-11-18 12:53:38 Europe/London
  - Call ExtUtils::Depends from the built Makefile.PL,

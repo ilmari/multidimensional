@@ -5,6 +5,7 @@ package multidimensional;
 use strict;
 use warnings;
 
+use Lexical::SealRequireHints;
 use B::Hooks::OP::Check;
 use XSLoader;
 
@@ -40,7 +41,7 @@ scope being compiled.
 
 =cut
 
-sub unimport { $^H{+(__PACKAGE__)} = 1 }
+sub unimport { $^H |= 0x20000; $^H{+(__PACKAGE__)} = 1 }
 
 =method import
 
@@ -49,7 +50,7 @@ scope being compiled;
 
 =cut
 
-sub import { $^H{+(__PACKAGE__)} = undef }
+sub import { delete $^H{+(__PACKAGE__)} }
 
 =head1 SEE ALSO
 
