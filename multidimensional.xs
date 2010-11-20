@@ -7,8 +7,9 @@
 # define PERL_UNUSED_ARG(x) PERL_UNUSED_VAR(x)
 #endif /* !PERL_UNUSED_ARG */
 
-#define __PACKAGE__ "multidimensional"
-#define __PACKAGE_LEN__ strlen(__PACKAGE__)
+#ifndef hv_fetchs
+# define hv_fetchs(hv, key, lval) hv_fetch(hv, key, strlen(key), lval)
+#endif /* !hv_fetchs */
 
 STATIC OP *last_list_start;
 
@@ -21,7 +22,7 @@ STATIC OP *multidimensional_list_check_op (pTHX_ OP *op, void *user_data) {
 }
 
 STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
-    SV **hint = hv_fetch(GvHV(PL_hintgv), __PACKAGE__, __PACKAGE_LEN__, 0);
+    SV **hint = hv_fetchs(GvHV(PL_hintgv), "multidimensional", 0);
 
     PERL_UNUSED_ARG(user_data);
 
