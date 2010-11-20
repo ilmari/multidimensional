@@ -1,6 +1,7 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Make work with perl < 5.8.8
 
 0.004     2010-11-19 12:58:33 Europe/London
  - Perl 5.8 fixes

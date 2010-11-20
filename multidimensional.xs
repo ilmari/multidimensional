@@ -3,6 +3,10 @@
 #include "XSUB.h"
 #include "hook_op_check.h"
 
+#ifndef PERL_UNUSED_ARG
+# define PERL_UNUSED_ARG(x) PERL_UNUSED_VAR(x)
+#endif /* !PERL_UNUSED_ARG */
+
 #define __PACKAGE__ "multidimensional"
 #define __PACKAGE_LEN__ strlen(__PACKAGE__)
 
