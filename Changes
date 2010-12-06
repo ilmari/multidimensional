@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+
+0.007     2010-12-06 23:06:16 Europe/London
  - Fix code before declaration in multidimensional.xs
    (RT#63676)
 
