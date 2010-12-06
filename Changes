@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Fix code before declaration in multidimensional.xs
+   (RT#63676)
 
 0.006     2010-11-22 12:44:03 Europe/London
  - Add B::Hooks::OP::Check to ConfigureRequires
