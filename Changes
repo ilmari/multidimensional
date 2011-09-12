@@ -1,6 +1,7 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Test string eval (RT#70602)
  - Require fixed version of Lexical::SealRequireHints (RT#70602)
  - Require fixed version of B::Hooks::OP::Check (RT#70599)
  - Make sure errors fire at compile time
