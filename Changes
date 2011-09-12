@@ -3,6 +3,7 @@ Revision history for multidimensional
 {{$NEXT}}
  - Require fixed version of Lexical::SealRequireHints (RT#70602)
  - Require fixed version of B::Hooks::OP::Check (RT#70599)
+ - Make sure errors fire at compile time
 
 0.007     2010-12-06 23:06:16 Europe/London
  - Fix code before declaration in multidimensional.xs

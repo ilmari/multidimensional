@@ -2,6 +2,6 @@ package MyTest;
 
 my %a;
 
-sub foo { $a{1,2} }
+$a{1,2} if 0;
 
 1;
