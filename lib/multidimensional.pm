@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 use Lexical::SealRequireHints 0.005;
-use B::Hooks::OP::Check;
+use B::Hooks::OP::Check 0.19;
 use XSLoader;
 
 XSLoader::load(
