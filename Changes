@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+
+0.008     2011-09-12 13:05:28 Europe/London
  - Test string eval (RT#70602)
  - Require fixed version of Lexical::SealRequireHints (RT#70602)
  - Require fixed version of B::Hooks::OP::Check (RT#70599)
