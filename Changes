@@ -2,6 +2,8 @@ Revision history for multidimensional
 
 {{$NEXT}}
 
+ - Require fixed version of CPAN::Meta (RT#70916)
+
 0.008     2011-09-12 13:05:28 Europe/London
  - Test string eval (RT#70602)
  - Require fixed version of Lexical::SealRequireHints (RT#70602)
