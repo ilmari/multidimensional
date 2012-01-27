@@ -12,3 +12,5 @@ blib/
 multidimensional-*/
 multidimensional-*.tar.gz
 .build/
+MYMETA.*
+META.*
