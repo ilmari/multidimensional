@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Generate default versions of META.yml and .json
+   This fixes configure_requires for older toolchains.
 
 0.009     2011-09-15 21:21:20 Europe/London
 
