@@ -1,5 +1,5 @@
 package multidimensional;
-# ABSTRACT: disables multidmensional array emulation
+# ABSTRACT: disables multidimensional array emulation
 
 { use 5.008; }
 use strict;
@@ -27,16 +27,16 @@ XSLoader::load(
 
 =head1 DESCRIPTION
 
-Perl's multidimensional array emultaion stems from the days before the
+Perl's multidimensional array emulation stems from the days before the
 language had references, but these days it mostly serves to bite you
 when you typo a hash slice by using the C<$> sigil instead of C<@>.
 
-This module lexically makes using multidmensional array emulation a
+This module lexically makes using multidimensional array emulation a
 fatal error at compile time.
 
 =method unimport
 
-Disables multidimensional array emultaion for the remainder of the
+Disables multidimensional array emulation for the remainder of the
 scope being compiled.
 
 =cut
