@@ -41,7 +41,7 @@ scope being compiled.
 
 =cut
 
-sub unimport { $^H |= 0x20000; $^H{+(__PACKAGE__)} = 1 }
+sub unimport { $^H |= 0x20000; $^H{__PACKAGE__.'/disabled'} = 1 }
 
 =method import
 
@@ -50,7 +50,7 @@ scope being compiled;
 
 =cut
 
-sub import { delete $^H{+(__PACKAGE__)} }
+sub import { delete $^H{__PACKAGE__.'/disabled'} }
 
 =head1 SEE ALSO
 

@@ -22,7 +22,7 @@ STATIC OP *multidimensional_list_check_op (pTHX_ OP *op, void *user_data) {
 }
 
 STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
-    SV **hint = hv_fetchs(GvHV(PL_hintgv), "multidimensional", 0);
+    SV **hint = hv_fetchs(GvHV(PL_hintgv), "multidimensional/disabled", 0);
     const OP *last;
 
     PERL_UNUSED_ARG(user_data);
