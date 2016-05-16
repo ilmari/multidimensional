@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+
+0.012     2016-05-16 19:18:11+01:00 Europe/London
   - Use "multidimensional/disabled" as the hints hash key
   - Fix building on -DPERL_OP_PARENT perls (RT#114395)
 
