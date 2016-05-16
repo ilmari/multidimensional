@@ -11,12 +11,16 @@
 # define hv_fetchs(hv, key, lval) hv_fetch(hv, key, strlen(key), lval)
 #endif /* !hv_fetchs */
 
+#ifndef OpSIBLING
+# define OpSIBLING(o)		(0 + (o)->op_sibling)
+#endif /* !OpSIBLING */
+
 STATIC OP *last_list_start;
 
 STATIC OP *multidimensional_list_check_op (pTHX_ OP *op, void *user_data) {
     PERL_UNUSED_ARG(user_data);
 
-    last_list_start = ((LISTOP*)op)->op_first->op_sibling;
+    last_list_start = OpSIBLING(((LISTOP*)op)->op_first);
 
     return op;
 }
@@ -30,10 +34,10 @@ STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
     if (!hint || !SvOK(*hint))
 	return op;
 
-    last = ((BINOP*)op)->op_first->op_sibling;
+    last = OpSIBLING(((BINOP*)op)->op_first);
     if (last && last->op_type == OP_JOIN) {
 	const OP *first = ((LISTOP*)last)->op_first;
-	const OP *next = first->op_sibling;
+	const OP *next = OpSIBLING(first);
 	if (first && first->op_type == OP_PUSHMARK
 	    && next && next->op_type == OP_RV2SV
 	    && next != last_list_start
