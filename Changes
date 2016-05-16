@@ -1,7 +1,7 @@
 Revision history for multidimensional
 
 {{$NEXT}}
-  - Use "multidimensional/enabled" as the hints hash key
+  - Use "multidimensional/disabled" as the hints hash key
 
 0.011     2013-02-07 18:14:26 Europe/London
   - Fix documentation typos
