@@ -1,6 +1,7 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+ - Switch to Dist::Zilla::PluginBundle::Starter
 
 0.012     2016-05-16 19:18:11+01:00 Europe/London
   - Use "multidimensional/disabled" as the hints hash key
