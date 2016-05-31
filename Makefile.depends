@@ -1,0 +1,8 @@
+use ExtUtils::Depends;
+%WriteMakefileArgs = (
+    %WriteMakefileArgs,
+    ExtUtils::Depends->new(
+        'multidimensional',
+        'B::Hooks::OP::Check'
+    )->get_makefile_vars,
+);

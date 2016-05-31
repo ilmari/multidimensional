@@ -1,5 +1,4 @@
 use ExtUtils::MakeMaker::Dist::Zilla::Develop;
-use ExtUtils::Depends;
 use Devel::PPPort 0.32_02;
 
 # NOTE:
@@ -8,7 +7,10 @@ use Devel::PPPort 0.32_02;
 # information like dependencies, is generated later by Dist::Zilla
 
 Devel::PPPort::WriteFile();
-WriteMakefile(
+
+our %WriteMakefileArgs = (
     NAME => 'multidimensional',
-    ExtUtils::Depends->new('multidimensional', 'B::Hooks::OP::Check')->get_makefile_vars,
 );
+do 'Makefile.depends' or die "Can't do Makefile.depends: " . ($@ || $!);
+
+WriteMakefile(%WriteMakefileArgs);
