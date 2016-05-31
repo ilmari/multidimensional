@@ -2,18 +2,7 @@
 #include "perl.h"
 #include "XSUB.h"
 #include "hook_op_check.h"
-
-#ifndef PERL_UNUSED_ARG
-# define PERL_UNUSED_ARG(x) PERL_UNUSED_VAR(x)
-#endif /* !PERL_UNUSED_ARG */
-
-#ifndef hv_fetchs
-# define hv_fetchs(hv, key, lval) hv_fetch(hv, key, strlen(key), lval)
-#endif /* !hv_fetchs */
-
-#ifndef OpSIBLING
-# define OpSIBLING(o)		(0 + (o)->op_sibling)
-#endif /* !OpSIBLING */
+#include "ppport.h"
 
 STATIC OP *last_list_start;
 
