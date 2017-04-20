@@ -1,6 +1,8 @@
 Revision history for multidimensional
 
 {{$NEXT}}
+
+0.013     2017-04-20 15:05:14+01:00 Europe/London
  - Switch to Dist::Zilla::PluginBundle::Starter
    and ::Plugin::DymamicPrereqs
  - Use Devel::PPPort insted of hand-rolled compat macros
