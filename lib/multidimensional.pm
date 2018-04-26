@@ -5,7 +5,7 @@ package multidimensional;
 use strict;
 use warnings;
 
-use Lexical::SealRequireHints 0.005;
+use if "$]" < 5.012, 'Lexical::SealRequireHints';
 use B::Hooks::OP::Check 0.19;
 use XSLoader;
 
