@@ -1,7 +1,7 @@
 package multidimensional;
 # ABSTRACT: disables multidimensional array emulation
 
-{ use 5.008; }
+{ use 5.008001; }
 use strict;
 use warnings;
 
