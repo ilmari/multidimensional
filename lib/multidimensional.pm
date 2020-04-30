@@ -41,7 +41,10 @@ scope being compiled.
 
 =cut
 
-sub unimport { $^H |= 0x20000; $^H{__PACKAGE__.'/disabled'} = 1 }
+sub unimport {
+    $^H |= 0x20000; # HINT_LOCALIZE_HH, to make %^H lexical on 5.8
+    $^H{__PACKAGE__.'/disabled'} = 1;
+}
 
 =method import
 
