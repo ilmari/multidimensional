@@ -9,7 +9,7 @@ STATIC OP *last_list_start;
 STATIC OP *multidimensional_list_check_op (pTHX_ OP *op, void *user_data) {
     PERL_UNUSED_ARG(user_data);
 
-    last_list_start = OpSIBLING(((LISTOP*)op)->op_first);
+    last_list_start = OpSIBLING(cLISTOPx(op)->op_first);
 
     return op;
 }
@@ -23,15 +23,15 @@ STATIC OP *multidimensional_helem_check_op (pTHX_ OP *op, void *user_data) {
     if (!hint || !SvOK(*hint))
 	return op;
 
-    last = OpSIBLING(((BINOP*)op)->op_first);
+    last = OpSIBLING(cBINOPx(op)->op_first);
     if (last && last->op_type == OP_JOIN) {
-	const OP *first = ((LISTOP*)last)->op_first;
+        const OP *first = cLISTOPx(last)->op_first;
 	const OP *next = OpSIBLING(first);
 	if (first && first->op_type == OP_PUSHMARK
 	    && next && next->op_type == OP_RV2SV
 	    && next != last_list_start
 	) {
-	    const OP *child = ((UNOP*)next)->op_first;
+	    const OP *child = cUNOPx(next)->op_first;
 	    if (child->op_type == OP_GV
 		&& GvSV(cGVOPx_gv(child)) == get_sv(";", 0)
 	    ) {
